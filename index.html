@@ -83,9 +83,8 @@
   src="https://www.google.com/maps?q=NNPC+Mega+Station,+Abia+Tower,+Umuahia,+Abia+State,+Nigeria&output=embed">
 </iframe>
 </section>
-<h2>Burial Poster</h2>
-<img src="burial-poster.jpg" alt="Grandpa Nwagbara Burial Poster"
-     style="width:100%; max-width:500px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); margin-top:20px;" />
+<h2>Countdown to the burial ceremony:</h2>
+<div id="countdown" style="font-size: 24px;"></div>
 
 <section>
   <h2>RSVP</h2>
@@ -97,6 +96,28 @@
     <button type="submit">Submit RSVP</button>
   </form>
 </section>
+<script>
+  const countdownDate = new Date("May 23, 2025 10:00:00").getTime();
+
+  const timer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "The ceremony has started!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  }, 1000);
+</script>
 
 <footer>
   <p>Thank you for your love and support. – Mr. and Mrs. Robert Nnachi</p>
